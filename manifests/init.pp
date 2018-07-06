@@ -16,5 +16,6 @@ class cx_airserver {
         group  => 'wheel',
         mode   => '0755',
         source => 'puppet:///modules/cx_airserver/files/airserver.sh',
+        before => File['/Library/LaunchAgents/com.connexta.airserver.plist'],
     }
 }
