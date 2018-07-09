@@ -8,7 +8,7 @@ class cx_airserver {
     file { '/Library/LaunchAgents/com.connexta.airserver.plist':
         owner  => 'root',
         group  => 'wheel',
-        mode   => '0755',
+        mode   => '0644',
         source => 'puppet:///modules/cx_airserver/files/com.airserver.plist',
     }
     file { '/opt/connexta/cx_airserver/scripts/airserver.sh':
