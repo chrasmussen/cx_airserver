@@ -58,23 +58,14 @@ node('puppet-test') {
         echo "preparing environment..."
     }
     stage('deploy') {
-        echo "deploying module..."
+        echo "deploying environment..."
         withCredentials([file(credentialsId: 'puppet-jenkins-ssh', variable: 'SSHUSER')]) {
-            try {
-                sh """#!/bin/bash
-                if [ ${merged} == true ]
-                    then
-                        ssh -o StrictHostKeyChecking=No \
-                            -i ${SSHUSER} \
-                        puppet-jenkins@puppet.phx.connexta.com \
-                        '/usr/bin/sudo -u root -i r10k deploy module -e ${puppetEnv} ${jobName[0]} -v'
-                else
-                    echo 'PR not merged, skipping deployment...' 
-                fi   
-                """
-            } catch(groovy.lang.MissingPropertyException ex) {
-                sh "echo '\$merged POST variable not found or job started locally, will not deploy module. Please manually run r10k to deploy.'"
-            }
+          sh """#!/bin/bash
+            ssh -o StrictHostKeyChecking=No \
+            -i ${SSHUSER} \
+            puppet-jenkins@puppet.phx.connexta.com \
+            '/usr/bin/sudo -u root -i r10k deploy module -e ${puppetEnv} ${jobName[0]} -v'
+          """
         } 
     }
 }
