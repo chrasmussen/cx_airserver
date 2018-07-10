@@ -24,7 +24,7 @@ class cx_airserver {
         owner  => 'root',
         group  => 'wheel',
         mode   => '0755',
-        source => 'puppet:///modules/cx_airserver/files/airserver.sh',
+        source => 'puppet:///modules/cx_airserver/airserver.sh',
         before => File['/Library/LaunchAgents/com.connexta.airserver.plist'],
     }
     file { '/Library/LaunchAgents/com.connexta.airserver.plist':
@@ -32,6 +32,6 @@ class cx_airserver {
         owner  => 'root',
         group  => 'wheel',
         mode   => '0644',
-        source => 'puppet:///modules/cx_airserver/files/com.airserver.plist',
+        source => 'puppet:///modules/cx_airserver/com.airserver.plist',
     }
 }
