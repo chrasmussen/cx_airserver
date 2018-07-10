@@ -32,6 +32,6 @@ class cx_airserver {
         owner  => 'root',
         group  => 'wheel',
         mode   => '0644',
-        source => 'puppet:///modules/cx_airserver/com.airserver.plist',
+        source => 'puppet:///modules/cx_airserver/com.connexta.airserver.plist',
     }
 }
