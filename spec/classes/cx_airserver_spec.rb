@@ -6,6 +6,20 @@ describe 'cx_airserver' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
+      it { is_expected.to contain_file('/opt/connexta/cx_airserver').with(
+	  'ensure' => 'directory',
+          'owner'  => 'root',
+          'group'  => 'wheel',
+          'mode'   => '0700',
+          'before' => 'File[/opt/connexta/cx_airserver/scripts]',
+            ) }
+      it { is_expected.to contain_file('/opt/connexta/cx_airserver/scripts').with(
+          'ensure' => 'directory',
+          'owner'  => 'root',
+          'group'  => 'wheel',
+          'mode'   => '0700',
+          'before' => 'File[/opt/connexta/cx_airserver/scripts/airserver.sh]',
+            ) }
       it { is_expected.to contain_file('/Library/LaunchAgents/com.connexta.airserver.plist').with(
           'owner'  => 'root',
           'group'  => 'wheel',
