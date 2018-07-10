@@ -24,7 +24,7 @@ describe 'cx_airserver' do
           'owner'  => 'root',
           'group'  => 'wheel',
           'mode'   => '0644',
-          'source' => 'puppet:///modules/cx_airserver/com.airserver.plist',
+          'source' => 'puppet:///modules/cx_airserver/com.connexta.airserver.plist',
             ) }
       it { is_expected.to contain_file('/opt/connexta/cx_airserver/scripts/airserver.sh').with(
           'owner'  => 'root',
